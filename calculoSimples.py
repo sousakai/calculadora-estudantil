@@ -8,7 +8,7 @@ def subtracao(a, b):
     return  a - b
 
 def divisao(a, b):
-    if a or b == 0:
+    if a == 0 or b == 0:
         return "Erro. Divisão por 0 não pode ser realizada."
     else:
         return  a / b
