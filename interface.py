@@ -3,35 +3,48 @@ from tkinter import ttk, messagebox
 import calculoSimples
 import calculoGeometria
 
-# Criar a janela principal
-root = tk.Tk()
-root.title("Calculadora Estudantil")
+# Configurações da janela principal
 
-# Definir tamanho da janela
-root.geometry("300x500")
+root = tk.Tk() #abre a tela
+root.title("Calculadora Estudantil") # nome da aba
+root.geometry("300x500") # tamanho da janela
+root.configure(bg="#a6a4a4")  # cor de fundo
 
-label_titulo = tk.Label(root, text="Calculadora Estudantil", font=("Arial", 18), anchor="center")
+
+# Título 
+label_titulo = tk.Label(root, text="Calculadora Estudantil", font=("Times New Roman", 18, "italic"), anchor="center", width=20, bg=root.cget('bg'))
 label_titulo.grid(row=0, column=0, padx=10, pady=10, sticky="ew")
+
 
 # Campo de Entrada para os números  (Frame)
 frame_inputs = tk.Frame(root)
 frame_inputs.grid(row=3, column=0, padx=10, pady=10)
 
 # Botão de Calcular (fora de exibir_campos para não ser removido)
-botao_calcular = tk.Button(frame_inputs, text="Calcular", command=lambda: calcular_resultado())
+botao_calcular = tk.Button(frame_inputs, text="Calcular", command=lambda: calcular_resultado(),
+    bg="#525050", fg="white",  # bg: cor de fundo; fg: cor da fonte
+                           font=("Helvetica", 10, "bold"),  # Fonte do botão;
+                           bd=0,  # Visibilidade da borda;
+                           relief="raised",  # Estilo de borda 
+                           highlightthickness=3,  # Espessura da borda
+                           activebackground="black",  # Cor quando o botão for pressionado
+                           activeforeground="white")  # Cor do texto quando pressionado
+                            
 
-# Modificação: Coloquei o botão fora do 'frame_inputs' para evitar sobreposição
-botao_calcular.grid(row=4, column=0, columnspan=2, pady=20)
+
+# md: Coloquei o botão fora do 'frame_inputs' para evitar sobreposição
+botao_calcular.grid(row=4, column=0, columnspan=2, pady=0)
+
 
 ##label do resultado 
 
-label_resultado = tk.Label(root, text="Resultado: ", font=("Arial", 14))
+label_resultado = tk.Label(root, text="Resultado: ", font=("Arial", 14), bg=root.cget('bg'))
 label_resultado.grid(row=4, column=0, padx=10, pady=10)
 
 
 
-
-marca_dagua = tk.Label(root, text="© 2025 Kayke Gonçalves de Sousa", fg="gray", font=("Arial", 8))
+#marca d'água
+marca_dagua = tk.Label(root, text="© 2025 Kayke Gonçalves de Sousa", fg="gray", font=("Arial", 8), bg=root.cget('bg'))
 marca_dagua.grid(row=10, column=0, padx=10, pady=10)
 
 
