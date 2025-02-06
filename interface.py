@@ -1,3 +1,5 @@
+## python -m auto_py_to_exe
+
 import tkinter as tk
 from tkinter import ttk, messagebox
 import calculoSimples
@@ -73,7 +75,7 @@ def atualizar_operacoes(event):
     if tipo_calculo == "Cálculos Simples":
         operacao_selecionada['values'] = ["Adição", "Subtração", "Multiplicação", "Divisão"]
     elif tipo_calculo == "Geometria":
-        operacao_selecionada['values'] = ["Área do Triângulo", "Perímetro do Triângulo"]
+        operacao_selecionada['values'] = ["Área do Triângulo", "Perímetro do Triângulo", "Tipo de Triângulo"]
     elif tipo_calculo == "Estatística":
         operacao_selecionada['values'] = ["Média", "Mediana", "Moda"]
     else:
@@ -115,6 +117,19 @@ def exibir_campos(event):
         entrada2.grid(row=1, column=1)
         
     elif operacao == "Perímetro do Triângulo":
+        tk.Label(frame_inputs, text="Lado 1:").grid(row=0, column=0)
+        entrada1 = tk.Entry(frame_inputs)
+        entrada1.grid(row=0, column=1)
+        
+        tk.Label(frame_inputs, text="Lado 2:").grid(row=1, column=0)
+        entrada2 = tk.Entry(frame_inputs)
+        entrada2.grid(row=1, column=1)
+        
+        tk.Label(frame_inputs, text="Lado 3:").grid(row=2, column=0)
+        entrada3 = tk.Entry(frame_inputs)
+        entrada3.grid(row=2, column=1)
+    
+    elif operacao == "Tipo de Triângulo":
         tk.Label(frame_inputs, text="Lado 1:").grid(row=0, column=0)
         entrada1 = tk.Entry(frame_inputs)
         entrada1.grid(row=0, column=1)
@@ -169,6 +184,14 @@ def calcular_resultado():
                 resultado = calculoGeometria.perimetroTriangulo(num1, num2, num3)
             else:
                 tk.messagebox.showerror("Erro", "Todos os lados devem ser informados para calcular o perímetro.")
+                return
+        
+        elif tipoOperacao == "Tipo de Triângulo":
+            
+            if num3 is not None:
+                resultado = calculoGeometria.tipoTriangulo(num1, num2, num3)
+            else:
+                tk.messagebox.showerror("Erro", "Todos os lados devem ser informados para calcular o tipo de triângulo.")
                 return
             
     if resultado is not None:
